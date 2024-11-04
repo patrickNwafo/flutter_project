@@ -1,6 +1,7 @@
-import 'package:flutter/cupertino.dart';
+import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 
+import '../base/res/media.dart';
 import '../base/res/styles/app_styles.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -13,6 +14,7 @@ class HomeScreen extends StatelessWidget {
     //ListView Builder
     return Scaffold(
       // We want a scrollable effect
+      backgroundColor: AppStyles.bgColor,
       body: ListView(
         children: [
           Container(
@@ -44,14 +46,27 @@ class HomeScreen extends StatelessWidget {
                       height: 50,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Colors.green,
+                        image: const DecorationImage(
+                            image: AssetImage(AppMedia.logo),
                       ),
+                    ),
                     ),
                   ],
                 ),
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [Text("Search icon"), Text("Empty space")],
+                const SizedBox(height: 2,),
+                Container(
+                  padding:const EdgeInsets.symmetric(horizontal:12, vertical:12),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                     color: const Color(0xFFF4F6FD),
+                  ),
+                  child: const Row(
+                   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Icon(FluentSystemIcons.ic_fluent_search_regular, color: Color(0xFFBFC205)),
+                      Text("Search")
+                    ],
+                  ),
                 ),
                 Container()
               ],
