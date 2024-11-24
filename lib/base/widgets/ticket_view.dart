@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ticket_app/base/res/styles/app_styles.dart';
+import 'package:ticket_app/base/widgets/app_column_text_layout.dart';
 import 'package:ticket_app/base/widgets/app_layoutbuilder_widget.dart';
 import 'package:ticket_app/base/widgets/big_circle.dart';
 import 'package:ticket_app/base/widgets/big_dot.dart';
@@ -109,57 +110,30 @@ class TicketView extends StatelessWidget {
                     bottomLeft: Radius.circular(21),
                     bottomRight: Radius.circular(21),
                   )),
-              child: Column(
+              child: const Column(
                 children: [
                   // Show departure and destination with icons first line
                   Row(
-                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        "21 NOV",
-                        style: AppStyles.headLineStyle2
-                            .copyWith(color: Colors.white),
+                     AppColumnTextLayout(
+                       topText: "1 MAY",
+                       bottomText: "DATE",
+                       alignment: CrossAxisAlignment.start,
+                     ),
+                      AppColumnTextLayout(
+                        topText: "08:00 AM",
+                        bottomText: "Departure time",
+                        alignment: CrossAxisAlignment.center,
                       ),
-                      Expanded(child: Container()),
-                      Text(
-                        "08:00 AM",
-                        style: AppStyles.headLineStyle2
-                            .copyWith(color: Colors.white),
+                      AppColumnTextLayout(
+                        topText: "23",
+                        bottomText: "Number",
+                        alignment: CrossAxisAlignment.end,
                       ),
-                      Expanded(child: Container()),
-                      Text(
-                        "23",
-                        style: AppStyles.headLineStyle2
-                            .copyWith(color: Colors.white),
-                      )
+
                     ],
                   ),
-                  const SizedBox(
-                    height: 3,
-                  ),
-                  // Show departure and destination names with time
-                  Row(
-                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Date",
-                        style: AppStyles.headLineStyle2
-                            .copyWith(color: Colors.white),
-                      ),
-                      Expanded(child: Container()),
-                      Text(
-                        "Departure time",
-                        style: AppStyles.headLineStyle2
-                            .copyWith(color: Colors.white),
-                      ),
-                      Expanded(child: Container()),
-                      Text(
-                        "Number",
-                        style: AppStyles.headLineStyle2
-                            .copyWith(color: Colors.white),
-                      )
-                    ],
-                  )
                 ],
               ),
             ),
