@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ticket_app/base/res/styles/app_styles.dart';
+import 'package:ticket_app/screens/all_tickets.dart';
 
 class AppDoubleText extends StatelessWidget {
   const AppDoubleText({super.key, required this.bigText, required this.smallText});
@@ -14,7 +15,12 @@ class AppDoubleText extends StatelessWidget {
         Text(bigText, style: AppStyles.headLineStyle3),
         InkWell(
           onTap: (){
-
+            Navigator.push<void>(
+              context,
+              MaterialPageRoute<void>(
+                builder: (BuildContext context) => const AllTickets(),
+              ),
+            );
           },
           child: Text(smallText, style: AppStyles.textStyle.copyWith(
             color: AppStyles.primaryColor

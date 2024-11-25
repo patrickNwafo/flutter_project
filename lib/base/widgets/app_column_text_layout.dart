@@ -14,7 +14,7 @@ class AppColumnTextLayout extends StatelessWidget {
       crossAxisAlignment: alignment,
       children: [
         TextStyleThird(text: topText),
-        SizedBox(height: 5,),
+        const SizedBox(height: 5,),
         TextStyleThird(text: bottomText),
       ],
     );
