@@ -1,18 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:ticket_app/base/bottom_nav_bar.dart';
+import 'package:ticket_app/screens/all_tickets.dart';
 
 
 void main() {
 
   runApp(const MyApp());
-  // ?:
-  // int x = 11;
-  // x==10?print("He is a kid"):print("He is not  a kid");
-  // if(x==10){
-  //   print("He is a kid");
-  // }else{
-  //   print("He is not a kid");
-  // }
 }
 
 
@@ -22,9 +15,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return const MaterialApp(
+    return  MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: BottomNavBar(),
+      routes: {
+        "/":(context)=> const BottomNavBar(),
+        "/all_tickets":(context)=>const AllTickets()
+      },
     );
   }
 }
