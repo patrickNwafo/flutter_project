@@ -76,9 +76,10 @@ class HomeScreen extends StatelessWidget {
                 ),
                 Container(),
                 const SizedBox(height: 40),
-                const AppDoubleText(
+                 AppDoubleText(
                   bigText: "Upcoming Flights",
                   smallText: "View all",
+                  func: () => Navigator.pushNamed(context, "/all_tickets"),
                 ),
                 const SizedBox(height: 20),
                 SingleChildScrollView(
@@ -88,6 +89,14 @@ class HomeScreen extends StatelessWidget {
                       TicketView(ticket: singleTicket)
                       ).toList(),
                     )
+                ),
+                const SizedBox(height: 40),
+                 AppDoubleText(
+                  bigText: "Hotels",
+                  smallText: "View all",
+                   func: () {
+
+                   },
                 ),
               ],
             ),
