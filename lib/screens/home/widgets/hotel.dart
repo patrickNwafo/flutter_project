@@ -3,14 +3,17 @@ import 'package:ticket_app/base/res/media.dart';
 import 'package:ticket_app/base/res/styles/app_styles.dart';
 
 class Hotel extends StatelessWidget {
-  const Hotel({super.key});
+  final Map<String, dynamic> hotel;
+  const Hotel({super.key, required this.hotel});
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Container(
+      padding: EdgeInsets.all(8.0),
       width: size.width * 0.6,
       height: 350,
+      margin: EdgeInsets.only(right: 16),
       decoration: BoxDecoration(
           color: AppStyles.primaryColor,
           borderRadius: BorderRadius.circular(24)),
@@ -18,42 +21,43 @@ class Hotel extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            height: 100,
+            height: 200,
             decoration: BoxDecoration(
                 color: AppStyles.primaryColor,
                 borderRadius: BorderRadius.circular(12),
-                image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage(AppMedia.hotelRoom))),
+                image:  DecorationImage(
+                    fit: BoxFit.cover, image: AssetImage("assets/images/${hotel['image']}"))),
           ),
-          const SizedBox(height: 10,),
+          const SizedBox(
+            height: 10,
+          ),
           Padding(
-            padding: const EdgeInsets.only(left: 15),
+            padding: const EdgeInsets.only(left: 18),
             child: Text(
-              "Open space",
-              style: AppStyles.headLineStyle1.copyWith(
-                color: AppStyles.kakiColor
-              ),
+              hotel['place'],
+              style:
+                  AppStyles.headLineStyle1.copyWith(color: AppStyles.kakiColor),
             ),
           ),
-          SizedBox(height: 5,),
+          SizedBox(
+            height: 5,
+          ),
           Padding(
             padding: const EdgeInsets.only(left: 15),
             child: Text(
-              "London",
-              style: AppStyles.headLineStyle2.copyWith(
-                  color: Colors.white
-              ),
+              hotel['destination'],
+              style: AppStyles.headLineStyle2.copyWith(color: Colors.white),
             ),
           ),
-          SizedBox(height: 5,),
+          SizedBox(
+            height: 5,
+          ),
           Padding(
             padding: const EdgeInsets.only(left: 15),
             child: Text(
-              "\$25?night",
-              style: AppStyles.headLineStyle1.copyWith(
-                  color: AppStyles.kakiColor
-              ),
+              "\$${hotel['price']}/night",
+              style:
+                  AppStyles.headLineStyle1.copyWith(color: AppStyles.kakiColor),
             ),
           )
         ],
