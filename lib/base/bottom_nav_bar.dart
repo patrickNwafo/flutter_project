@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:ticket_app/screens/home/home_screen.dart';
 import 'package:ticket_app/screens/search/search_screen.dart';
 
+import '../screens/tickets/ticket_screen.dart';
+
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({super.key});
 
@@ -15,7 +17,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   final appScreens = [
     const HomeScreen(),
     const SearchScreen(),
-    const Center(child: Text("Tickets")),
+    const TicketScreen(),
     const Center(child: Text("Profile")),
   ];
 

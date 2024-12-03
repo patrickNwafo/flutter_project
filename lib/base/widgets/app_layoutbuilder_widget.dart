@@ -3,15 +3,17 @@ import 'package:flutter/material.dart';
 
 class AppLayoutBuilderWidget extends StatelessWidget {
   final double width;
+  final bool? isColor;
   final int randomDivider;
 
-  const AppLayoutBuilderWidget({super.key, required this.randomDivider, this.width=3});
+  const AppLayoutBuilderWidget(
+      {super.key, required this.randomDivider, this.width = 3, this.isColor});
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
-        // print("${(constraints.constrainWidth() / randomDivider)}");
+      // print("${(constraints.constrainWidth() / randomDivider)}");
 
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -21,8 +23,11 @@ class AppLayoutBuilderWidget extends StatelessWidget {
             (index) => SizedBox(
                   width: width,
                   height: 1,
-                  child: const DecoratedBox(
-                      decoration: BoxDecoration(color: Colors.white)),
+                  child: DecoratedBox(
+                      decoration: BoxDecoration(
+                          color: isColor == null
+                              ? Colors.white
+                              : Colors.grey.shade300)),
                 )),
       );
     });
