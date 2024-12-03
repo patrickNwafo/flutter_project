@@ -163,7 +163,7 @@ class TicketView extends StatelessWidget {
                         topText: ticket["departure_time"].toString(),
                         bottomText: "Departure time",
                         alignment: CrossAxisAlignment.center,
-                        isColor: isColor,
+
                       ),
                       AppColumnTextLayout(
                         topText: ticket["number"].toString(),
