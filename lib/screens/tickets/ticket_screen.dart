@@ -10,8 +10,24 @@ import 'package:ticket_app/screens/tickets/widgets/ticket_position_circle.dart';
 
 import '../../base/res/media.dart';
 
-class TicketScreen extends StatelessWidget {
+class TicketScreen extends StatefulWidget {
   const TicketScreen({super.key});
+
+  @override
+  State<TicketScreen> createState() => _TicketScreenState();
+}
+
+class _TicketScreenState extends State<TicketScreen> {
+  late int ticketIndex = 0;
+
+  @override
+  void didChangeDependencies() {
+    var args = ModalRoute.of(context)!.settings.arguments as Map;
+    print("passed index ${args["index"]}");
+    // TODO: implement didChangeDependencies
+    ticketIndex = args["index"];
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +63,7 @@ class TicketScreen extends StatelessWidget {
               Container(
                   padding: const EdgeInsets.only(left: 16),
                   child: TicketView(
-                    ticket: ticketList[0],
+                    ticket: ticketList[ticketIndex],
                     isColor: true,
                   )),
               const SizedBox(
@@ -152,7 +168,9 @@ class TicketScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: 1,),
+              const SizedBox(
+                height: 1,
+              ),
               // Bottom of the ticket detail section
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 15),
@@ -163,7 +181,7 @@ class TicketScreen extends StatelessWidget {
                         bottomRight: Radius.circular(21),
                         bottomLeft: Radius.circular(21))),
                 child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 15),
+                  padding: EdgeInsets.symmetric(horizontal: 15),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(15),
                     child: BarcodeWidget(
@@ -177,17 +195,23 @@ class TicketScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
               //colorful ticket
               Container(
                   padding: const EdgeInsets.only(left: 16),
                   child: TicketView(
-                    ticket: ticketList[0],
+                    ticket: ticketList[ticketIndex],
                   )),
             ],
           ),
-          const TicketPositionCircle(pos: true,),
-          const TicketPositionCircle(pos: null,),
+          const TicketPositionCircle(
+            pos: true,
+          ),
+          const TicketPositionCircle(
+            pos: null,
+          ),
         ],
       ),
     );
