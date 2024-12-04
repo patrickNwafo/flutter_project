@@ -17,15 +17,15 @@ class AppStyles {
   static Color planeSecondColor = const Color(0xFFBACCF7);
 
   static TextStyle textStyle =
-    TextStyle(fontSize: 16, color: textColor, fontWeight: FontWeight.w500);
+      TextStyle(fontSize: 16, color: textColor, fontWeight: FontWeight.w500);
 
   static TextStyle headLineStyle1 =
       TextStyle(fontSize: 26, fontWeight: FontWeight.bold, color: textColor);
   static TextStyle headLineStyle3 =
       TextStyle(fontSize: 21, fontWeight: FontWeight.bold, color: textColor);
   static TextStyle headLineStyle2 =
-  TextStyle(fontSize: 17, fontWeight: FontWeight.w500, color: textColor);
+      TextStyle(fontSize: 17, fontWeight: FontWeight.w500, color: textColor);
 
   static TextStyle headLineStyle4 =
-  TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: textColor);
+      TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.grey.shade500);
 }
