@@ -106,6 +106,12 @@ List<Map<String, dynamic>> hotelList = [
     'destination': 'Dubai',
     'price': 68
   },
+  {
+    'image': 'pool_view.png',
+    'place': 'Best city pool',
+    'destination': 'Dubai',
+    'price': 68
+  },
 ];
 
 // class AppRoutes{

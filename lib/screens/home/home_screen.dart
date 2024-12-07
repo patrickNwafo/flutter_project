@@ -5,7 +5,6 @@ import 'package:ticket_app/base/widgets/app_double_text.dart';
 import 'package:ticket_app/base/widgets/ticket_view.dart';
 import 'package:ticket_app/screens/home/widgets/hotel.dart';
 
-
 import '../../base/res/media.dart';
 import '../../base/res/styles/app_styles.dart';
 import '../../base/utils/app_jason.dart';
@@ -83,7 +82,8 @@ class HomeScreen extends StatelessWidget {
                 AppDoubleText(
                   bigText: "Upcoming Flights",
                   smallText: "View all",
-                  func: () => Navigator.pushNamed(context, AppRoutes.allTickets),
+                  func: () =>
+                      Navigator.pushNamed(context, AppRoutes.allTickets),
                 ),
                 const SizedBox(height: 20),
                 SingleChildScrollView(
@@ -104,7 +104,7 @@ class HomeScreen extends StatelessWidget {
                   },
                 ),
                 const SizedBox(height: 20),
-                 SingleChildScrollView(
+                SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: hotelList
