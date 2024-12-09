@@ -70,7 +70,7 @@ class _HotelDetailState extends State<HotelDetail> {
                             shadows: [
                               Shadow(
                                 blurRadius: 10.0,
-                                color: AppStyles.primaryColor,
+                                color: Colors.red,
                                 offset: Offset(2.0, 2.0)
                               )
                             ],
