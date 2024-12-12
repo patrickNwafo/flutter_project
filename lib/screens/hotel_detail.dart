@@ -64,14 +64,14 @@ class _HotelDetailState extends State<HotelDetail> {
                         color: Colors.black.withOpacity(0.5),
                         child: Text(
                           hotelList[index]["place"],
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 24,
-                              color: Colors.white,
+                            color: Colors.white,
                             shadows: [
                               Shadow(
                                 blurRadius: 10.0,
                                 color: Colors.red,
-                                offset: Offset(2.0, 2.0)
+                                offset: Offset(2.0, 2.0),
                               )
                             ],
                           ),
@@ -83,10 +83,14 @@ class _HotelDetailState extends State<HotelDetail> {
           ),
           SliverList(
               delegate: SliverChildListDelegate([
-            const Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Text(
-                  "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop  including versions of Lorem Ipsum."),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: ExpandedTextWidget(
+                text: hotelList[index]["detail"],
+              ),
+              //   Text(
+              //       "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop  including versions of Lorem Ipsum."),
+              //
             ),
             const Padding(
               padding: EdgeInsets.all(16.0),
@@ -95,23 +99,72 @@ class _HotelDetailState extends State<HotelDetail> {
                 style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
               ),
             ),
-            Container(
-              height: 200.0,
-              child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      margin: EdgeInsets.all(8),
-                      color: Colors.red,
-                      child:
-                          Image.network("https://via.placeholder.com/200x200"),
-                    );
-                  }),
+            SizedBox(
+              child: Container(
+                height: 200.0,
+                child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: hotelList[index]["images"].length,
+                    itemBuilder: (context, imagesIndex) {
+                      return Container(
+                        margin: const EdgeInsets.all(8),
+                        color: Colors.red,
+                        child:
+                            Image.asset(
+                              "assets/images/${hotelList[index]["images"][imagesIndex]}"
+                            ),
+                      );
+                    }),
+              ),
             )
           ]))
         ],
       ),
+    );
+  }
+}
+
+class ExpandedTextWidget extends StatefulWidget {
+  const ExpandedTextWidget({super.key, required this.text});
+  final String text;
+
+  @override
+  State<ExpandedTextWidget> createState() => _ExpandedTextWidgetState();
+}
+
+class _ExpandedTextWidgetState extends State<ExpandedTextWidget> {
+  bool isExpanded = false;
+  _toggleExpansion() {
+    setState(() {
+      isExpanded = !isExpanded;
+    });
+    print("The value is ${isExpanded}");
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    var textWidget = Text(
+      widget.text,
+      maxLines: isExpanded ? null : 4,
+      overflow: isExpanded ? TextOverflow.visible : TextOverflow.ellipsis,
+    );
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        textWidget,
+        GestureDetector(
+          onTap: () {
+            _toggleExpansion();
+          },
+          child: Text(
+            isExpanded ? "Less" : "More",
+            style: AppStyles.textStyle.copyWith(
+              color: AppStyles.primaryColor,
+            ),
+          ),
+        )
+      ],
     );
   }
 }
