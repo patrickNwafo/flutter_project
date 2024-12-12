@@ -88,7 +88,7 @@ class HotelGridView extends StatelessWidget {
                 AppStyles.headLineStyle2.copyWith(color: AppStyles.kakiColor),
               ),
             ),
-            SizedBox(width: 5,),
+            const SizedBox(width: 5,),
            Row(
              children: [
                Padding(
