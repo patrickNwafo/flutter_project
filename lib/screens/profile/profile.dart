@@ -2,6 +2,7 @@ import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:ticket_app/base/res/media.dart';
 import 'package:ticket_app/base/res/styles/app_styles.dart';
+import 'package:ticket_app/base/widgets/app_column_text_layout.dart';
 import 'package:ticket_app/base/widgets/heading_text.dart';
 import 'package:ticket_app/base/widgets/text_style_fourth.dart';
 
@@ -34,7 +35,10 @@ class ProfileScreen extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const HeadingText(text: "Book Tickets", isColor: false,),
+                  const HeadingText(
+                    text: "Book Tickets",
+                    isColor: false,
+                  ),
                   Text(
                     "New York",
                     style: TextStyle(
@@ -85,14 +89,16 @@ class ProfileScreen extends StatelessWidget {
               Text(
                 "Edit",
                 style: TextStyle(
-                  color: AppStyles.primaryColor, fontWeight: FontWeight.w300
-                ),
+                    color: AppStyles.primaryColor, fontWeight: FontWeight.w300),
               )
             ],
           ),
-          const SizedBox(height: 8,),
+          const SizedBox(
+            height: 8,
+          ),
           //divider
-          Divider(color: Colors.grey.shade300,
+          Divider(
+            color: Colors.grey.shade300,
           ),
           //Show the card
           Stack(
@@ -101,12 +107,12 @@ class ProfileScreen extends StatelessWidget {
                 height: 90,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: AppStyles.primaryColor,
-                  borderRadius: BorderRadius.circular(18)
-                ),
+                    color: AppStyles.primaryColor,
+                    borderRadius: BorderRadius.circular(18)),
               ),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
                 child: Row(
                   children: [
                     CircleAvatar(
@@ -118,12 +124,14 @@ class ProfileScreen extends StatelessWidget {
                         size: 27,
                       ),
                     ),
-                    const SizedBox(width: 12,),
+                    const SizedBox(
+                      width: 12,
+                    ),
                     const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         TextStyleFourth(
-                            text: "You\'v got a new award",
+                          text: "You\'v got a new award",
                           isColor: null,
                         ),
                         TextStyleFourth(
@@ -136,43 +144,151 @@ class ProfileScreen extends StatelessWidget {
                 ),
               ),
               Positioned(
-                top: -40,
+                  top: -40,
                   right: -45,
                   child: Container(
                     padding: EdgeInsets.all(30),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(width: 18, color: Color(0xFF2646D2)),
-                  ),
-              ))
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(width: 18, color: Color(0xFF2646D2)),
+                    ),
+                  ))
             ],
           ),
-          const SizedBox(height: 25,),
-          Text("Accumulated miles", style: AppStyles.headLineStyle3,),
+          const SizedBox(
+            height: 25,
+          ),
+          Text(
+            "Accumulated miles",
+            style: AppStyles.headLineStyle3,
+          ),
           Container(
+            padding: EdgeInsets.symmetric(horizontal: 15),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(18),
-              color: AppStyles.bgColor
-            ),
+                borderRadius: BorderRadius.circular(18),
+                color: AppStyles.bgColor),
             child: Column(
               children: [
-                const SizedBox(height: 15,),
-                Text("192802", style: TextStyle(
-                  fontSize: 45, color: AppStyles.textColor, fontWeight: FontWeight.w600
-                ),),
+                const SizedBox(
+                  height: 15,
+                ),
+                Text(
+                  "192802",
+                  style: TextStyle(
+                      fontSize: 45,
+                      color: AppStyles.textColor,
+                      fontWeight: FontWeight.w600),
+                ),
                 //row -> text,
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Miles acciured",
-                      style: AppStyles.headLineStyle4,
-                    )
+                      "Miles accured",
+                      style: AppStyles.headLineStyle4.copyWith(fontSize: 16),
+                    ),
+                    Text(
+                      "16th July",
+                      style: AppStyles.headLineStyle4.copyWith(fontSize: 16),
+                    ),
                   ],
-                )
+                ),
+                const SizedBox(
+                  height: 4,
+                ),
+                //divider
+                Divider(
+                  color: Colors.grey.shade300,
+                ),
+                const SizedBox(
+                  height: 4,
+                ),
+
                 //row -> column
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    AppColumnTextLayout(
+                      topText: "23 402",
+                      bottomText: "Miles",
+                      alignment: CrossAxisAlignment.start,
+                      isColor: false,
+                    ),
+                    AppColumnTextLayout(
+                      topText: "Airline CO",
+                      bottomText: "Received from",
+                      alignment: CrossAxisAlignment.end,
+                      isColor: false,
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 4,
+                ),
+                //divider
+                Divider(
+                  color: Colors.grey.shade300,
+                ),
+                const SizedBox(
+                  height: 4,
+                ),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    AppColumnTextLayout(
+                      topText: "Airline CO",
+                      bottomText: "Received from",
+                      alignment: CrossAxisAlignment.start,
+                      isColor: false,
+                    ),
+                    AppColumnTextLayout(
+                      topText: "24",
+                      bottomText: "Miles",
+                      alignment: CrossAxisAlignment.end,
+                      isColor: false,
+                    ),
+
+                  ],
+                ),
+                const SizedBox(
+                  height: 4,
+                ),
+                //divider
+                Divider(
+                  color: Colors.grey.shade300,
+                ),
+                const SizedBox(
+                  height: 4,
+                ),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    AppColumnTextLayout(
+                      topText: "23 402",
+                      bottomText: "Miles",
+                      alignment: CrossAxisAlignment.start,
+                      isColor: false,
+                    ),
+                    AppColumnTextLayout(
+                      topText: "ZeroGaze",
+                      bottomText: "Received from",
+                      alignment: CrossAxisAlignment.end,
+                      isColor: false,
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 4,
+                ),
+                //divider
+                Divider(
+                  color: Colors.grey.shade300,
+                ),
+                const SizedBox(
+                  height: 4,
+                ),
                 //row -> column
                 //text
-
               ],
             ),
           )
