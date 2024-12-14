@@ -277,18 +277,19 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: 4,
-                ),
-                //divider
-                Divider(
-                  color: Colors.grey.shade300,
-                ),
-                const SizedBox(
-                  height: 4,
-                ),
-                //row -> column
                 //text
+                InkWell(
+                  onTap: (){
+                    print("tapped");
+                  },
+                  child: Text(
+                    "How to get more miles",
+                    style: AppStyles.textStyle.copyWith(
+                      color: AppStyles.primaryColor,
+                      fontWeight: FontWeight.w500
+                    ),
+                  ),
+                )
               ],
             ),
           )
