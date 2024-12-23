@@ -26,7 +26,7 @@ class BottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("My tab val ${controller.selectedIndex.value}");
+    // print("My tab val ${controller.selectedIndex.value}");
     return Obx((){
       return Scaffold(
         body: appScreens[controller.selectedIndex.value],
