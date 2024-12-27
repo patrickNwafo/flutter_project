@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 import 'package:ticket_app/base/bottom_nav_bar.dart';
 import 'package:ticket_app/base/utils/app_routes.dart';
@@ -10,7 +11,9 @@ import 'package:ticket_app/screens/tickets/ticket_screen.dart';
 
 void main() {
 
-  runApp(const MyApp());
+  runApp(
+      const ProviderScope(child: MyApp())
+  );
 }
 
 
@@ -20,7 +23,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return  GetMaterialApp(
+    return  MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
        AppRoutes.homePage:(context)=>  BottomNavBar(),

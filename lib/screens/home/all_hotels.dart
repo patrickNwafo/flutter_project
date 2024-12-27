@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ticket_app/base/res/styles/app_styles.dart';
 import 'package:ticket_app/base/utils/app_routes.dart';
-import 'package:ticket_app/screens/home/widgets/hotel.dart';
 
 import '../../base/utils/app_jason.dart';
 
@@ -17,7 +16,7 @@ class AllHotels extends StatelessWidget {
         backgroundColor: AppStyles.bgColor,
       ),
       body: Container(
-        margin: EdgeInsets.only(left: 8),
+        margin: const EdgeInsets.only(left: 8),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: GridView.builder(
