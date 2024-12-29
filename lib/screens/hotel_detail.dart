@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ticket_app/base/res/styles/app_styles.dart';
 import 'package:ticket_app/base/utils/app_jason.dart';
+import 'package:ticket_app/bloc/text_expansion_blocs.dart';
+import 'package:ticket_app/bloc/text_expansion_events.dart';
+import 'package:ticket_app/bloc/text_expansion_states.dart';
 import 'package:ticket_app/controller/text_expansion_controller.dart';
 import 'package:get/get.dart';
 import 'package:ticket_app/provider/text_expansion_provider.dart';
@@ -128,37 +132,48 @@ class _HotelDetailState extends State<HotelDetail> {
   }
 }
 
-class ExpandedTextWidget extends ConsumerWidget {
+class ExpandedTextWidget extends StatelessWidget {
   ExpandedTextWidget({super.key, required this.text});
   final String text;
 
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    var provider = ref.watch(textExpansionNotifierProvider);
+  Widget build(BuildContext context) {
+    //var provider = ref.watch(textExpansionNotifierProvider);
 
-    var textWidget = Text(
-      text,
-      maxLines: provider?null:4,
-      overflow: provider ? TextOverflow.visible : TextOverflow.ellipsis,
-    );
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        textWidget,
-        GestureDetector(
-          onTap: () {
-            ref.watch(textExpansionNotifierProvider.notifier).toggleText(provider);
-          },
-          child: Text(
-            provider ? "Less" : "More",
-            style: AppStyles.textStyle.copyWith(
-              color: AppStyles.primaryColor,
-            ),
-          ),
-        )
-      ],
-    );
+
+    return BlocBuilder<TextExpansionBlocs, TextExpansionStates>(builder: (context, state){
+      if(state is IsExpandedState){
+        var isExpanded = state.isExpanded;
+        var textWidget = Text(
+          text,
+          maxLines: isExpanded?null:4,
+          overflow: isExpanded ? TextOverflow.visible : TextOverflow.ellipsis,
+        );
+
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            textWidget,
+            GestureDetector(
+              onTap: () {
+                //ref.watch(textExpansionNotifierProvider.notifier).toggleText(provider);
+                context.read<TextExpansionBlocs>().add(IsExpandedEvent(!isExpanded));
+              },
+              child: Text(
+                isExpanded ? "Less" : "More",
+                style: AppStyles.textStyle.copyWith(
+                  color: AppStyles.primaryColor,
+                ),
+              ),
+            )
+          ],
+        );
+      }else {
+        return Container();
+      }
+
+    });
   }
 }
